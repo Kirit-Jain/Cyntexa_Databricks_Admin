@@ -1,0 +1,18 @@
+resources:
+  jobs:
+    Digital_banking_pipeline_job:
+      name: Digital_banking_pipeline_job
+      email_notifications:
+        on_failure:
+          - kiritjaink@gmail.com
+      notification_settings:
+        no_alert_for_skipped_runs: true
+      schedule:
+        quartz_cron_expression: 35 38 15 * * ?
+        timezone_id: Asia/Calcutta
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: pipeline-task-45464fe1-e84b-4e33-a2f1-46b7b1161c95
+          pipeline_task:
+            pipeline_id: 45464fe1-e84b-4e33-a2f1-46b7b1161c95
+      performance_target: PERFORMANCE_OPTIMIZED

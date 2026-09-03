@@ -69,11 +69,10 @@ def silver_customers_stg():
     return deduplicated_df
 
 
-@dp.view(
-    name=f"silver_customers_cleaned_stg",
-    comment="Clean, validated customer records with data quality checks applied"
+@dp.temporary_view(
+    name="silver_customers_cleaned_stg"
 )
-def silver_customers():
+def silver_customers_cleaned_stg():
     return (
         spark.readStream.table("silver_customers_stg")
         .filter(col("is_valid_record") == True)
